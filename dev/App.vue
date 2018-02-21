@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div id="app">
-      <h1 class="title">Vue Query Builder Demo - Boostrap 4</h1>
-      <a class="btn btn-default github-link" href="https://github.com/kailashrdave/vue-query-builder">Source on GitHub</a>
+      <h1 class="title">Vue Query Builder Demo - Element UI</h1>
+      <a class="btn btn-default github-link" href="https://github.com/kailashrdave/vue-query-builder/tree/vueQueryBuilder-elementUI">Source on GitHub</a>
 
       <hr>
 
@@ -25,8 +25,12 @@
   import VueQueryBuilder from '../src/VueQueryBuilder.vue';
   import RangeInput from './RangeInput';
   import Vue from 'vue'    
-  import vSelect from 'vue-select'
-  Vue.component('v-select', vSelect)
+  
+  import ElementUI from 'element-ui'
+  import locale from 'element-ui/lib/locale/lang/en'
+  import 'element-ui/lib/theme-chalk/index.css'
+  
+  Vue.use(ElementUI, {locale, size:'small'})
 
   export default {
     components: {
@@ -181,15 +185,15 @@
               {label: "Val 3", id: "3"}
             ],
             sourceUrl:'',
-            inputType:'select2'
+            inputType:'select'
           },
           {
             type: "date",
             id: "date-field",
             label: "A date Field",
-            operators: ['=','<>','<','<=','>','>='],
+            operators: ['=','<>','<','<=','>','>=','range'],
             inputType:'date',
-            format:"MM/DD/YYYY"
+            format:"dd/MM/yyyy"
           }
         ]
       }
