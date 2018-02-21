@@ -3,7 +3,7 @@
     
       <el-form-item  :label="rule.label"   style="margin-bottom:'0px'">
         <el-row :gutter="10">
-          <el-col :span="2">
+          <el-col :span="4">
             <el-select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand">
               <el-option v-for="operand in rule.operands" :key="operand" :label="operand" :value="operand"></el-option>
             </el-select>
@@ -23,7 +23,7 @@
             <el-radio-group v-if="rule.inputType === 'radio'" v-model="query.value" >
                 <el-radio style="display:inline" v-for="choice in rule.choices" :key="choice.value" :label="choice.value"></el-radio>
             </el-radio-group>  
-            <el-select v-if="rule.inputType === 'select'" 
+            <el-select v-if="rule.inputType === 'select'" value-key="value" 
               :multiple="rule.type == 'multi-select'" 
               v-model="query.value"
               style="width:100%;">

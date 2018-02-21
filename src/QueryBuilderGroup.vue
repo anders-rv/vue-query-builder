@@ -9,6 +9,7 @@
             <el-option :label="labels.matchTypeAll" :value="labels.matchTypeAll"></el-option>
             <el-option :label="labels.matchTypeAny" :value="labels.matchTypeAny"></el-option>
           </el-select>
+          <el-button size="large" style="float:right;padding:3px;" type="info" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"> </el-button>
           </el-form-item>
         </el-form>
         <!--<div :class="{ 'form-group': styled }">
@@ -19,7 +20,7 @@
           </select>
         </div>
         <button :class="{ 'close ml-auto': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button> -->
-        <el-button style="float:right;padding:3px 0;" type="info" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"> </el-button>
+        
       </div>
     </div>
 
@@ -39,7 +40,7 @@
               </el-select>
             </el-col>
             <el-col :span="10">
-                <el-button type="info" v-html="labels.addRule" v-if="this.depth < this.maxDepth" @click="addRule"> </el-button>
+                <el-button type="info" v-html="labels.addRule" @click="addRule"> </el-button>
                 <el-button type="info" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"  :style="{marginLeft : '5px'}"> </el-button>
 
             </el-col>
