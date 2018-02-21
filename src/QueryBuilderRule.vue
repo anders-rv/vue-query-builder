@@ -48,7 +48,12 @@
               
             </el-date-picker>
           </el-col>
+          <el-button size="large" style="float:right;padding:3px;" type="info" @click="remove" v-html="labels.removeRule"></el-button>
         </el-row>
+        
+          
+          
+          
       </el-form-item>
 
      
