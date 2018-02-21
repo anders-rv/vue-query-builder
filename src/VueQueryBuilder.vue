@@ -17,6 +17,7 @@
 <script>
 import QueryBuilderGroup from './QueryBuilderGroup.vue';
 import deepClone from './utilities.js';
+ import 'element-ui/lib/theme-chalk/index.css'
 
 var defaultLabels = {
   matchType: "Match Type",

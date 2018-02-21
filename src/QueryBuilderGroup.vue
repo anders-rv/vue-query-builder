@@ -1,33 +1,67 @@
 <template>
-  <div class="vqb-group" :class="classObject">
-    <div class="vqb-group-heading" :class="{ 'card-header': styled }">
+  <el-card class="vqb-group" :class="classObject">
+    <div class="clearfix" slot="header">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
-        <div :class="{ 'form-group': styled }">
+        
+        <el-form>
+          <el-form-item :label="labels.matchType">
+          <el-select v-model="query.logicalOperator">
+            <el-option :label="labels.matchTypeAll" :value="labels.matchTypeAll"></el-option>
+            <el-option :label="labels.matchTypeAny" :value="labels.matchTypeAny"></el-option>
+          </el-select>
+          </el-form-item>
+        </el-form>
+        <!--<div :class="{ 'form-group': styled }">
           <label for="vqb-match-type" class="mr-2">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
             <option>{{ labels.matchTypeAll }}</option>
             <option>{{ labels.matchTypeAny }}</option>
           </select>
         </div>
-        <button :class="{ 'close ml-auto': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
+        <button :class="{ 'close ml-auto': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button> -->
+        <el-button style="float:right;padding:3px 0;" type="info" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"> </el-button>
       </div>
     </div>
 
     <div class="vqb-group-body" :class="{ 'card-body': styled }">
       <div class="rule-actions" :class="{ '': styled }">
         <div :class="{ 'form-row': styled }">
-          <div class="col-12 col-md-4 col-lg-4 col-sm-12 col-xs-12">
-          <select v-model="selectedRule" :class="{ 'form-control': styled }">
+        <el-form>
+          <el-row :gutter="10">
+            <el-col :span="5">
+              <el-select v-model="selectedRule" value-key="id" style="width:100%;">
+                  <el-option 
+                    v-for="(rule, index) in rules" 
+                    :key="index" 
+                    :label="rule.label" 
+                    :value="rule">
+                  </el-option>
+              </el-select>
+            </el-col>
+            <el-col :span="10">
+                <el-button type="info" v-html="labels.addRule" v-if="this.depth < this.maxDepth" @click="addRule"> </el-button>
+                <el-button type="info" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"  :style="{marginLeft : '5px'}"> </el-button>
+
+            </el-col>
+          </el-row>
+        </el-form>
+          <!-- <div class="col-12 col-md-4 col-lg-4 col-sm-12 col-xs-12"> -->
+            
+            
+          
+          
+          <!-- <select v-model="selectedRule" :class="{ 'form-control': styled }">
             <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
           </select>
           </div>
           <div class="col-12  col-md-8 col-lg-8 col-sm-12 col-xs-12">
           <button @click="addRule" :class="{ 'btn btn-secondary': styled }" v-html="labels.addRule"></button>
           <button :class="{ 'btn btn-secondary': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
-          </div>
+          </div> -->
         </div>
+        
       </div>
-
+<el-form>
       <div class="children">
         <component
           v-for="(child, index) in query.children"
@@ -46,8 +80,9 @@
           v-on:child-deletion-requested="removeChild">
         </component>
       </div>
+</el-form>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -130,13 +165,18 @@ export default {
   computed: {
     classObject () {
       var classObject = {
-        'card card': this.styled,
+        'box-card': this.styled,
       }
 
       classObject['depth-' + this.depth.toString()] = this.styled;
 
       return classObject;
     }
+  },
+
+  mounted:function(){
+    this.selectedRule = this.rules[0];
+    console.log("test")
   }
 }
 </script>
