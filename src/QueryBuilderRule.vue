@@ -36,9 +36,9 @@
             </el-select>
             <el-date-picker  v-if="rule.inputType === 'date'"
               v-model="query.value"
-              value-format="dd/MM/yyyy"
+              :value-format="rule.format !== 'undefined' ? rule.format : 'MM/dd/yyyy'"
               @input="dateUpdate"
-              :format="rule.format !== 'undefined' ? rule.format : 'dd/MM/yyyy'"
+              :format="rule.format !== 'undefined' ? rule.format : 'MM/dd/yyyy'"
               :type="query.selectedOperator !=='range' ? 'date' : 'daterange'"
               :placeholder="query.selectedOperator !=='range' ? 'Pick a date' : ''"
               range-separator="To"
@@ -48,7 +48,7 @@
               
             </el-date-picker>
           </el-col>
-          <el-button size="large" style="float:right;padding:3px;" type="info" @click="remove" v-html="labels.removeRule"></el-button>
+          <el-button size="large" style="float:right;padding:3px;" type="default" @click="remove" v-html="labels.removeRule"></el-button>
         </el-row>
         
           
