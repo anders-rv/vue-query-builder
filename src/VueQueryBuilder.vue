@@ -8,6 +8,7 @@
       :maxDepth="maxDepth"
       :depth="depth"
       :styled="styled"
+      :operatorsWithoutValue="operatorsWithoutValue"
       :labels="mergedLabels"
       type="query-builder-group"
       ></query-builder-group>
@@ -54,6 +55,10 @@ export default {
       validator: function (value) {
         return value >= 1
       }
+    },
+    operatorsWithoutValue: {
+      type: Array,
+      default: function () { return [] }
     },
     initialQuery: Object
   },

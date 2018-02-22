@@ -78,6 +78,7 @@
           :depth="depth + 1"
           :styled="styled"
           :labels="labels"
+          :operatorsWithoutValue="operatorsWithoutValue"
           v-on:child-deletion-requested="removeChild">
         </component>
       </div>
@@ -97,7 +98,7 @@ export default {
     QueryBuilderRule
   },
 
-  props: ['ruleTypes', 'type', 'query', 'rules', 'index', 'maxDepth', 'depth', 'styled', 'labels'],
+  props: ['ruleTypes', 'type', 'query', 'rules', 'index', 'maxDepth', 'depth', 'styled', 'labels','operatorsWithoutValue'],
 
   methods: {
     ruleById (ruleId) {
@@ -133,6 +134,8 @@ export default {
     },
 
     addGroup () {
+      console.log("KD");
+      console.log(this.operatorsWithoutValue);
       let updated_query = deepClone(this.query);
       if ( this.depth < this.maxDepth ) {
         updated_query.children.push({

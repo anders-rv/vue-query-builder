@@ -11,7 +11,7 @@
               <el-option v-for="operator in rule.operators" :key="operator" :label="operator" :value="operator"></el-option>
             </el-select>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="8" v-if="!isOperatorWithoutValue()">
             <el-input  v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></el-input>
             <el-input-number v-if="rule.inputType === 'number'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></el-input-number>
             <template v-if="isCustomComponent">
@@ -120,8 +120,8 @@ import deepClone from './utilities.js';
 
 export default {
   name: "query-builder-rule",
-
-  props: ['query', 'index', 'rule', 'styled', 'labels'],
+  
+  props: ['query', 'index', 'rule', 'styled', 'labels','operatorsWithoutValue'],
 
   beforeMount () {
     if (this.rule.type === 'custom-component' || this.rule.type =='select2') {
@@ -148,10 +148,17 @@ export default {
       this.query.value = val;
     },
     operatorChange:function(){
+     
       if(this.rule.type && this.query.selectedOperator !== 'range')
       {
           this.query.value = '';
       }
+    },
+    isOperatorWithoutValue:function(){
+      console.log(this.operatorsWithoutValue);
+      console.log(this.query.selectedOperator);
+      console.log(this.operatorsWithoutValue.indexOf(this.query.selectedOperator) );
+      return this.operatorsWithoutValue.indexOf(this.query.selectedOperator) >= 0;
     }
   },
 
@@ -176,6 +183,11 @@ export default {
       this.$emit('update:query', updated_query);
     }
     if (this.rule.type === 'custom-component') {
+      updated_query.value = this.rule.default || null;
+      this.$emit('update:query', updated_query);
+    }
+    if(this.isOperatorWithoutValue())
+    {
       updated_query.value = this.rule.default || null;
       this.$emit('update:query', updated_query);
     }
