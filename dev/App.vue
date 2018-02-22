@@ -12,6 +12,7 @@
         :labels="labels"
         :initialQuery="initialQuery"
         @queryUpdated="queryUpdated"
+        :operatorsWithoutValue="operatorsWithoutValue"
         ></vue-query-builder>
 
       <hr>
@@ -64,6 +65,7 @@
           removeRule: "&times;",
           removeGroup: "&times;",
         },
+        operatorsWithoutValue:["is empty","is not empty"],
         rules: [
           {
             type: "text",
@@ -191,7 +193,7 @@
             type: "date",
             id: "date-field",
             label: "A date Field",
-            operators: ['=','<>','<','<=','>','>=','range'],
+            operators: ['=','<>','<','<=','>','>=','range','is empty'],
             inputType:'date',
             format:"dd/MM/yyyy"
           }
