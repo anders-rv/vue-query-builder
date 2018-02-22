@@ -144,7 +144,6 @@ export default {
          
     },
     dateUpdate:function(val){
-      //console.log(val);
       this.query.value = val;
     },
     operatorChange:function(){
@@ -155,9 +154,7 @@ export default {
       }
     },
     isOperatorWithoutValue:function(){
-      console.log(this.operatorsWithoutValue);
-      console.log(this.query.selectedOperator);
-      console.log(this.operatorsWithoutValue.indexOf(this.query.selectedOperator) );
+      
       return this.operatorsWithoutValue.indexOf(this.query.selectedOperator) >= 0;
     }
   },

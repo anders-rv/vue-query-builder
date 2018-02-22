@@ -134,8 +134,7 @@ export default {
     },
 
     addGroup () {
-      console.log("KD");
-      console.log(this.operatorsWithoutValue);
+      
       let updated_query = deepClone(this.query);
       if ( this.depth < this.maxDepth ) {
         updated_query.children.push({
@@ -180,7 +179,7 @@ export default {
 
   mounted:function(){
     this.selectedRule = this.rules[0];
-    console.log("test")
+    
   }
 }
 </script>
