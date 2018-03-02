@@ -29,7 +29,7 @@
         <div :class="{ 'form-row': styled }">
         <el-form>
           <el-row :gutter="10">
-            <el-col :span="5">
+            <el-col :span="5" :sm="10" :xs="10">
               <el-select v-model="selectedRule" value-key="id" style="width:100%;">
                   <el-option 
                     v-for="(rule, index) in rules" 
@@ -39,7 +39,7 @@
                   </el-option>
               </el-select>
             </el-col>
-            <el-col :span="10">
+            <el-col :span="10" :sm="14" :xs="14">
                 <el-button type="default" v-html="labels.addRule" @click="addRule"> </el-button>
                 <el-button type="default" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"  :style="{marginLeft : '5px'}"> </el-button>
 

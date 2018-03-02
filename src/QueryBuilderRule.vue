@@ -3,7 +3,8 @@
     
       <el-form-item  :label="rule.label"   style="margin-bottom:'0px'">
         <el-row :gutter="10">
-          <el-col :span="4">
+          <el-button size="large" style="float:right;padding:3px;" type="default" @click="remove" v-html="labels.removeRule"></el-button>
+          <el-col :span="4" :sm="24" :xs="24" :md="4">
             <el-select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand">
               <el-option v-for="operand in rule.operands" :key="operand" :label="operand" :value="operand"></el-option>
             </el-select>
@@ -11,7 +12,7 @@
               <el-option v-for="operator in rule.operators" :key="operator" :label="operator" :value="operator"></el-option>
             </el-select>
           </el-col>
-          <el-col :span="8" v-if="!isOperatorWithoutValue()">
+          <el-col :span="8"  :md="8" :sm="24" :xs="24" v-if="!isOperatorWithoutValue()">
             <el-input  v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></el-input>
             <el-input-number v-if="rule.inputType === 'number'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></el-input-number>
             <template v-if="isCustomComponent">
@@ -25,6 +26,7 @@
             </el-radio-group>  
             <el-select v-if="rule.inputType === 'select'" value-key="value" 
               :multiple="rule.type == 'multi-select'" 
+              filterable
               v-model="query.value"
               style="width:100%;">
               <el-option
@@ -48,7 +50,7 @@
               
             </el-date-picker>
           </el-col>
-          <el-button size="large" style="float:right;padding:3px;" type="default" @click="remove" v-html="labels.removeRule"></el-button>
+          
         </el-row>
         
           

@@ -145,6 +145,14 @@ export default {
       }, {
       deep: true
     });
+    this.$watch(
+      'initialQuery',
+      function( newQuery ){
+        if(newQuery != null && newQuery != undefined)
+          this.query = deepClone(newQuery);
+      }, {
+      deep: true
+    });
 
     if ( typeof this.$options.propsData.initialQuery !== "undefined" ) {
       this.query = deepClone(this.$options.propsData.initialQuery);
