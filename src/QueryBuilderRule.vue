@@ -28,12 +28,14 @@
               :multiple="rule.type == 'multi-select'" 
               filterable
               v-model="query.value"
-              style="width:100%;">
+              style="width:100%;"
+              :placeholder="rule.placeholder">
               <el-option
               v-for="(choice,index) in rule.choices"
               :value="choice.value"
               :key="index"
-              :label="choice.label">
+              :label="choice.label"
+              >
               </el-option>
             </el-select>
             <el-date-picker  v-if="rule.inputType === 'date'"

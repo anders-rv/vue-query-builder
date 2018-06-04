@@ -102,13 +102,15 @@ export default {
           operators: ['=','<>'],
           choices: [],
           inputType: "select",
-          id: "select-field"
+          id: "select-field",
+          placeholder:"All"
         },
         "multi-select": {
           operators: ['='],
           choices: [],
           inputType: "select",
-          id: "multi-select-field"
+          id: "multi-select-field",
+          placeholder:"All"
         },
       }
     }
