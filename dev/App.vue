@@ -133,7 +133,8 @@
               {label: "Val 1", value: "val1"},
               {label: "Val 2", value: "val2"},
               {label: "Val 3", value: "val3"}
-            ]
+            ],
+            placeholder:"All"
           },
           {
             type: "multi-select",
@@ -143,7 +144,8 @@
               {label: "Val 1", value: "val1"},
               {label: "Val 2", value: "val2"},
               {label: "Val 3", value: "val3"}
-            ]
+            ],
+            placeholder:"All"
           },
           {
             type: "custom",
@@ -195,7 +197,7 @@
             label: "A date Field",
             operators: ['=','<>','<','<=','>','>=','range','is empty'],
             inputType:'date',
-            format:"dd/MM/yyyy"
+            format:"MM/dd/yyyy"
           }
         ]
       }
