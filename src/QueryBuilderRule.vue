@@ -8,7 +8,7 @@
       </select>
       </div>
      <div>
-      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }" class="custom-select">
+      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }" class="custom-select pl-2" style="min-width: 120px;">
         <option v-for="operator in rule.operators" v-bind:value="operator">
           {{ operator }}
         </option>
@@ -103,7 +103,6 @@ export default {
 <<<<<<< Updated upstream
 =======
 
-<style src="pikaday/css/pikaday.css"></style>
 <style scoped>
 input.date-picker.calendar-icon {
   background-image: url(/static/calendar.png);
