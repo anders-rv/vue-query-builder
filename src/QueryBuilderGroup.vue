@@ -4,7 +4,7 @@
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type" class="mr-2">{{ labels.matchType }}</label>
-          <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
+          <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator" class="custom-select">
             <option>{{ labels.matchTypeAll }}</option>
             <option>{{ labels.matchTypeAny }}</option>
           </select>
@@ -17,7 +17,7 @@
       <div class="rule-actions" :class="{ '': styled }">
         <div :class="{ 'form-row': styled }">
           <div class="col-12 col-md-4 col-lg-4 col-sm-12 col-xs-12">
-          <select v-model="selectedRule" :class="{ 'form-control': styled }">
+          <select v-model="selectedRule" :class="{ 'form-control': styled }" class="custom-select">
             <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
           </select>
           </div>

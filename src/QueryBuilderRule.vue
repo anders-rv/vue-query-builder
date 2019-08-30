@@ -3,12 +3,12 @@
     <div :class="{ 'form-inline': styled }">
       <label>{{ rule.label }}</label>
       <div>
-      <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
+      <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }" class="custom-select">
         <option v-for="operand in rule.operands">{{ operand }}</option>
       </select>
       </div>
      <div>
-      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
+      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }" class="custom-select">
         <option v-for="operator in rule.operators" v-bind:value="operator">
           {{ operator }}
         </option>
@@ -37,6 +37,7 @@
       <select
         v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
+        class="custom-select"
         :multiple="rule.type === 'multi-select'"
         v-model="query.value">
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
@@ -99,3 +100,26 @@ export default {
   }
 }
 </script>
+<<<<<<< Updated upstream
+=======
+
+<style src="pikaday/css/pikaday.css"></style>
+<style scoped>
+input.date-picker.calendar-icon {
+  background-image: url(/static/calendar.png);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.date-picker {
+  margin-right: 0;
+  margin-left: 0;
+  border: 1px solid #ccc;
+  padding: 9px 0;
+  line-height: 1.1;
+  color: #444;
+  border-radius: 3px;
+  text-indent: 13px;
+  cursor: pointer;
+}
+</style>
+>>>>>>> Stashed changes
